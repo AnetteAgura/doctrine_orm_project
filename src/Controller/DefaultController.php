@@ -9,9 +9,14 @@ class DefaultController extends Controller
 {
     public function homepage(Request $request, Response $response)
     {
-    	$articles = $this->ci->get('db')->getRepository('App\Entity\Article')->findBy([], [
-    		'published' => 'DESC'
-    	]);
+    	$dql = "SELECT a FROM App\Entity\Article a
+    		WHERE a.published <= CURRENT_TIMESTAMP()
+    		ORDER BY a.published DESC";
+
+    	$query = $this->ci->get('db')->createQuery($dql);
+
+    	$articles = $query->getResult();
+
         return $this->renderPage($response, 'homepage.html', [
         	'articles' => $articles
         ]);

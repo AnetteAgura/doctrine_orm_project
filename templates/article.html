@@ -1,7 +1,8 @@
 {{%FILTERS}}
 {{#article}}
 	<h1>{{getName}}</h1>
-	<p>Published {{getPublished | date}}</p>
+	<p>Published {{getPublished | date}} by 
+		{{#getAuthor}}<a href="/author/{{getId}}">{{getName}}</a>{{/getAuthor}}</p>
 	<p><img src="/images/{{getImage}}"></p>
-	<p>{{getBody}}</p>
-	{{/article}}
+	{{{getBody}}}
+{{/article}}

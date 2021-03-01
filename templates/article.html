@@ -4,5 +4,8 @@
 	<p>Published {{getPublished | date}} by 
 		{{#getAuthor}}<a href="/author/{{getId}}">{{getName}}</a>{{/getAuthor}}</p>
 	<p><img src="/images/{{getImage}}"></p>
+	{{#tags}}
+		<a href="/tag/{{getId}}">{{getName}}</a>
+	{{/tags}}
 	{{{getBody}}}
 {{/article}}

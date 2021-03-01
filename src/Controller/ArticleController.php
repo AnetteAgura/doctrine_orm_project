@@ -23,6 +23,7 @@ class ArticleController extends Controller
 
         return $this->renderPage($response, 'article.html', [
         	'article' => $article
+            'tags' => $article->getTags()
         ]);
     }
 

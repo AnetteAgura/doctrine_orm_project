@@ -26,6 +26,9 @@ class Tag {
 	*/
 	private $articles;
 	
+	public function __construct(){
+		$this->articles = new ArrayCollection;
+	}
 
 	public function getId(){
 		return $this ->id;

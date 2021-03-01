@@ -30,7 +30,8 @@ $app->get('/admin', '\App\Controller\AdminController:view');
 $app->any('/admin/create', '\App\Controller\AdminController:create');
 $app->any('/admin/{id}', '\App\Controller\AdminController:edit');
 $app->get('/author/{id}', '\App\Controller\AuthorController:author');
-$app->get('/tags', '\App\Controller\TagsController:tag');
+$app->get('/tags', '\App\Controller\TagsController:view');
+$app->get('/tag/{id}', '\App\Controller\TagsController:tag');
 
 // finish
 $app->run();

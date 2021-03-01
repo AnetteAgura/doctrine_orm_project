@@ -1,7 +1,10 @@
-<h1>Tags</h1>
+<h1>{{#tag}}{{getName}}{{/tag}}</h1>
 
-<div class="tags-list">
-{{#tags}}
-	<h2><a href="/tag/{{getId}}">{{getName}}</a></h2>
-{{/tags}}
+<div class="article-list">
+{{#articles}}
+	<article>
+		<a href="/article/{{getSlug}}"><img src="/images/{{getImage}}"></a>
+		<h2><a href="/article/{{getSlug}}">{{getName}}</a></h2>
+	</article>
+{{/articles}}
 </div>

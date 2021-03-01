@@ -17,7 +17,7 @@ class AuthorController extends Controller
     	if(!$author){
     		throw new HttpNotFoundException($request);
     	}
-
+        /*
     	$dql = "SELECT a FROM App\Entity\Article a
     			WHERE a.author = :author
     			ORDER BY a.published DESC";
@@ -25,10 +25,10 @@ class AuthorController extends Controller
     	$query = $this->ci->get('db')->createQuery($dql);
     	$query ->setParameter('author', $author);
     	$articles = $query->getResult();
-
+        */
         return $this->renderPage($response, 'author.html', [
         	'author' => $author,
-        	'articles' => $articles
+        	'articles' => $author->getArticles()
         ]);
     }
 }

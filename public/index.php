@@ -24,14 +24,16 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 
 // define page routes
-$app->get('/article/{slug}', '\App\Controller\ArticleController:view');
 $app->get('/', '\App\Controller\DefaultController:homepage');
-$app->get('/admin', '\App\Controller\AdminController:view');
-$app->any('/admin/create', '\App\Controller\AdminController:create');
-$app->any('/admin/{id}', '\App\Controller\AdminController:edit');
+$app->get('/admin/article', '\App\Controller\ArticleAdminController:view');
+$app->any('/admin/article/create', '\App\Controller\ArticleAdminController:create');
+$app->any('/admin/article/{id}', '\App\Controller\ArticleAdminController:edit');
+$app->get('/article/{slug}', '\App\Controller\ArticleController:view');
 $app->get('/author/{id}', '\App\Controller\AuthorController:author');
-$app->get('/tags', '\App\Controller\TagsController:view');
-$app->get('/tag/{id}', '\App\Controller\TagsController:tag');
+$app->get('/admin/tags', '\App\Controller\TagController:view');
+$app->get('/tag/{id}', '\App\Controller\TagController:tag');
+$app->any('/admin/tags/create', '\App\Controller\TagController:create');
+$app->any('/admin/tags/{id}', '\App\Controller\TagController:edit');
 
 // finish
 $app->run();

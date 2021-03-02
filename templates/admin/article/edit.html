@@ -1,5 +1,5 @@
-<p class="breadcrumbs"><a href="/admin">Admin</a> &raquo;
-<h1>Create article</h1>
+<<p class="breadcrumbs"><a href="/admin/article">Admin</a> &raquo;
+<h1>Edit article</h1>
 
 {{#article}}
 <form method="post">
@@ -12,9 +12,23 @@
     <label for="image">Image</label>
     <input type="text" name="image" id="image" value="{{getImage}}">
 
+    <label for="author">Author</label>
+    <select name="author" id="author">{{{authors}}}</select>
+
     <label for="body">Body</label>
     <textarea name="body" id="body">{{{getBody}}}</textarea>
 
-    <button>Publish</button>
+    <button>Update</button>
+</form>
+
+<h2>Delete article</h2>
+
+<p>
+    If you want to remove this article, use the button below.
+</p>
+
+<form method="post">
+    <input type="hidden" name="action" value="delete">
+    <button class="danger">Delete</button>
 </form>
 {{/article}}

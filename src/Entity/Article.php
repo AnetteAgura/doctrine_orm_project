@@ -3,15 +3,16 @@
 namespace App\Entity;
 
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collection\ArrayCollection;
+
 /**
 * @Entity
 */
 class Article {
     /**
     * @Column(type="integer")
-    *@Id
-    *@GeneratedValue
+    * @Id
+    * @GeneratedValue
     */
     private $id;
     /**
@@ -34,80 +35,80 @@ class Article {
     * @Column(type="datetime")
     */
     private $published;
+
     /**
     * @ManyToOne(targetEntity="Author", inversedBy="articles")
     */
     private $author;
 
     /**
-    * @ManyToMany(targetEntity="Tag", cascade={"persist"})
+    * @ManyToMany(targetEntity="Tag", inversedBy="articles", cascade={"persist"})
     * @JoinTable(name="article_tags")
     * @JoinColumn(referencedColumnName="id", nullable=false)
     */
-
     private $tags;
 
     public function __construct(){
-        $this->tags = new ArrayCollection;
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId(){
-        return $this ->id;
+        return $this->id;
     }
 
     public function setId($value){
-        $this ->id = $value;
+        $this->id = $value;
     }
 
     public function getName(){
-        return $this ->name;
+        return $this->name;
     }
 
     public function setName($value){
-        $this ->name = $value;
+        $this->name = $value;
     }
 
     public function getSlug(){
-        return $this ->slug;
+        return $this->slug;
     }
 
     public function setSlug($value){
-        $this ->slug = $value;
+        $this->slug = $value;
     }
 
     public function getImage(){
-        return $this ->image;
+        return $this->image;
     }
 
     public function setImage($value){
-        $this ->image = $value;
+        $this->image = $value;
     }
 
     public function getBody(){
-        return $this ->body;
+        return $this->body;
     }
 
     public function setBody($value){
-        $this ->body = $value;
+        $this->body = $value;
     }
 
     public function getPublished(){
-        return $this ->published;
+        return $this->publiched;
     }
 
-    public function setPublish( DateTime $value = null){
-        $this ->published = $value;
+    public function setPublish(DateTime $value = null){
+        $this->publiched = $value;
     }
 
     public function getAuthor(){
-        return $this ->author;
+        return $this->author;
     }
 
     public function setAuthor($value){
-        $this ->author = $value;
+        $this->author = $value;
     }
 
     public function getTags(){
-        return $this ->tags;
+        return $this->tags;
     }
 }
